@@ -1,0 +1,279 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SnackSOS | Hostel Essentials, Sorted!</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700;800&family=Outfit:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<nav class="navbar">
+    <a href="#" class="logo">
+        <span class="logo-icon">🍜</span>
+        Snack<span>SOS</span>
+    </a>
+
+    <div class="nav-links">
+        <a href="#browse">Browse</a>
+        <a href="#how">How it works</a>
+        <a href="#community">Community</a>
+    </div>
+
+    <button class="nav-post" id="navPost">+ Post an item</button>
+</nav>
+
+<header class="hero">
+    <div class="hero-content">
+        <div class="hero-tag">
+            <span>🧡</span> THE HOSTEL COMMUNITY BOARD
+        </div>
+
+        <h1>Craving something?<br>
+            <span>Someone's got it.</span>
+        </h1>
+
+        <p>
+            Maggi at midnight? Extra biscuits? A packet of chips?
+            Find what you need or help a fellow hostelite out.
+        </p>
+
+        <div class="hero-buttons">
+            <a href="#browse" class="primary-btn">Find something 🍪</a>
+            <button class="secondary-btn" id="heroPost">Offer something +</button>
+        </div>
+
+        <div class="hero-note">
+            ✦ Made for hostel life. Powered by students.
+        </div>
+    </div>
+
+    <div class="hero-art">
+        <div class="art-circle"></div>
+        <div class="food-emoji emoji-one">🍜</div>
+        <div class="food-emoji emoji-two">🍪</div>
+        <div class="food-emoji emoji-three">🥤</div>
+        <div class="food-emoji emoji-four">🍫</div>
+
+        <div class="hero-sticker">
+            <strong>11:47 PM</strong>
+            <span>Anyone got Maggi? 👀</span>
+        </div>
+    </div>
+</header>
+
+<section class="stats-strip">
+    <div>
+        <strong id="availableCount">0</strong>
+        <span>Items available</span>
+    </div>
+    <div>
+        <strong id="requestCount">0</strong>
+        <span>Student requests</span>
+    </div>
+    <div>
+        <strong>24/7</strong>
+        <span>Hostel energy</span>
+    </div>
+    <div>
+        <strong>🤝</strong>
+        <span>Student powered</span>
+    </div>
+</section>
+
+<main>
+
+<section class="browse-section" id="browse">
+
+    <div class="section-heading">
+        <div>
+            <span class="eyebrow">THE COMMUNITY PANTRY</span>
+            <h2>What's available?</h2>
+            <p>Find something nearby or discover what others are offering.</p>
+        </div>
+        <button class="post-button" id="browsePost">+ List an item</button>
+    </div>
+
+    <div class="search-box">
+        <span>⌕</span>
+        <input type="text" id="searchInput"
+            placeholder="Search Maggi, chips, biscuits, shampoo...">
+        <button id="searchButton">Search</button>
+    </div>
+
+    <div class="filter-row">
+        <div class="category-filters" id="categoryFilters">
+            <button class="filter-btn active" data-category="All">All items</button>
+            <button class="filter-btn" data-category="Instant Food">🍜 Instant food</button>
+            <button class="filter-btn" data-category="Snacks">🍪 Snacks</button>
+            <button class="filter-btn" data-category="Beverages">🥤 Beverages</button>
+            <button class="filter-btn" data-category="Groceries">🛒 Groceries</button>
+            <button class="filter-btn" data-category="Essentials">🧴 Essentials</button>
+        </div>
+    </div>
+
+    <div class="listing-header">
+        <h3>Available right now <span>●</span></h3>
+        <span id="listingCount">0 items</span>
+    </div>
+
+    <div class="listing-grid" id="listingGrid"></div>
+
+    <div class="empty-state hidden" id="emptyState">
+        <span>🥺</span>
+        <h3>Nothing here right now!</h3>
+        <p>Try another category or be the first to list something.</p>
+        <button id="emptyPost">Post an item</button>
+    </div>
+
+</section>
+
+<section class="request-section" id="community">
+    <div class="request-content">
+        <div>
+            <span class="eyebrow">NEED SOMETHING?</span>
+            <h2>Put your SOS out there!</h2>
+            <p>
+                Can't find what you're craving? Post a request.
+                Someone in your hostel might just have it.
+            </p>
+        </div>
+
+        <button id="requestOpen">🙋 Request something</button>
+    </div>
+
+    <div class="request-list">
+        <h3>Student requests</h3>
+        <div id="requestGrid" class="request-grid"></div>
+    </div>
+</section>
+
+<section class="how-section" id="how">
+    <span class="eyebrow">SIMPLE AS THAT</span>
+    <h2>Hostel sharing, simplified.</h2>
+
+    <div class="how-grid">
+        <div class="how-card">
+            <span>📦</span>
+            <h3>Post an item</h3>
+            <p>Have extra snacks or essentials? Let your hostel community know.</p>
+        </div>
+
+        <div class="how-card">
+            <span>🔎</span>
+            <h3>Find what you need</h3>
+            <p>Search listings and find students who have what you're looking for.</p>
+        </div>
+
+        <div class="how-card">
+            <span>🤝</span>
+            <h3>Connect and collect</h3>
+            <p>Contact the student and coordinate collection directly.</p>
+        </div>
+    </div>
+</section>
+
+</main>
+
+<footer>
+    <a href="#" class="logo">🍜 Snack<span>SOS</span></a>
+    <p>Because hostel life is better when we share. 🧡</p>
+    <span>© 2026 SnackSOS</span>
+</footer>
+
+<!-- ITEM MODAL -->
+
+<div class="modal-overlay hidden" id="itemModal">
+    <div class="modal">
+        <button class="close-btn" data-close="itemModal">×</button>
+
+        <span class="modal-emoji">🍪</span>
+        <h2>List something for your hostelmates</h2>
+        <p class="modal-subtitle">Share your extras with the community.</p>
+
+        <form id="itemForm">
+            <label>Item name</label>
+            <input type="text" id="itemName" placeholder="e.g. Maggi packets" required>
+
+            <label>Category</label>
+            <select id="itemCategory" required>
+                <option value="">Choose category</option>
+                <option>Instant Food</option>
+                <option>Snacks</option>
+                <option>Beverages</option>
+                <option>Groceries</option>
+                <option>Essentials</option>
+            </select>
+
+            <label>Quantity</label>
+            <input type="text" id="itemQuantity" placeholder="e.g. 2 packets" required>
+
+            <label>Price (₹)</label>
+            <input type="number" id="itemPrice" min="0" placeholder="Enter 0 if free" required>
+
+            <label>Your name</label>
+            <input type="text" id="sellerName" placeholder="Your name" required>
+
+            <label>Hostel / Block</label>
+            <input type="text" id="sellerHostel" placeholder="e.g. Hostel H" required>
+
+            <label>Contact number</label>
+            <input type="tel" id="sellerPhone" placeholder="10-digit number" pattern="[0-9]{10}" required>
+
+            <button type="submit" class="form-submit">Post my listing ↗</button>
+        </form>
+    </div>
+</div>
+
+<!-- REQUEST MODAL -->
+
+<div class="modal-overlay hidden" id="requestModal">
+    <div class="modal">
+        <button class="close-btn" data-close="requestModal">×</button>
+
+        <span class="modal-emoji">🙋</span>
+        <h2>Send out an SOS!</h2>
+        <p class="modal-subtitle">Tell everyone what you're looking for.</p>
+
+        <form id="requestForm">
+            <label>What do you need?</label>
+            <input type="text" id="requestItem" placeholder="e.g. Anyone got a packet of Maggi?" required>
+
+            <label>Category</label>
+            <select id="requestCategory" required>
+                <option value="">Choose category</option>
+                <option>Instant Food</option>
+                <option>Snacks</option>
+                <option>Beverages</option>
+                <option>Groceries</option>
+                <option>Essentials</option>
+            </select>
+
+            <label>Your name</label>
+            <input type="text" id="requestName" placeholder="Your name" required>
+
+            <label>Hostel / Block</label>
+            <input type="text" id="requestHostel" placeholder="e.g. Hostel H" required>
+
+            <button type="submit" class="form-submit">Post my request ↗</button>
+        </form>
+    </div>
+</div>
+
+<!-- ITEM DETAILS MODAL -->
+
+<div class="modal-overlay hidden" id="detailsModal">
+    <div class="modal">
+        <button class="close-btn" data-close="detailsModal">×</button>
+        <div id="detailsContent"></div>
+    </div>
+</div>
+
+<div class="toast" id="toast"></div>
+
+<script src="script.js"></script>
+</body>
+</html>
