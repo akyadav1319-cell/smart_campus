@@ -1,0 +1,304 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>BuddyRoute — Better Trips Together</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700;800&family=Outfit:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+  <header class="navbar">
+    <a href="#" class="logo">
+      <span class="logo-icon">B</span>
+      BuddyRoute<span class="logo-dot">.</span>
+    </a>
+
+    <nav>
+      <a href="#explore">Explore trips</a>
+      <a href="#how">How it works</a>
+      <a href="#myTrips">My trips</a>
+    </nav>
+
+    <button class="btn btn-primary" id="createTripBtn">+ Plan a trip</button>
+  </header>
+
+  <main>
+
+    <!-- HERO -->
+    <section class="hero">
+      <div class="hero-content">
+        <span class="eyebrow">✈️ YOUR CAMPUS, YOUR COMMUNITY</span>
+        <h1>Going somewhere?<br><span>Don't go alone.</span></h1>
+
+        <p>
+          Heading to the market, grabbing groceries or planning a weekend outing?
+          Find a fellow student going your way.
+        </p>
+
+        <div class="hero-actions">
+          <a href="#explore" class="btn btn-primary">Find a travel buddy →</a>
+          <button class="btn btn-outline" id="heroCreateBtn">Plan an outing</button>
+        </div>
+
+        <div class="hero-note">
+          <span>👫</span>
+          <span>Shared plans. Better journeys. Campus connections.</span>
+        </div>
+      </div>
+
+      <div class="hero-visual">
+        <div class="route-circle"></div>
+
+        <div class="map-path">
+          <span class="map-pin pin-one">📍</span>
+          <span class="map-pin pin-two">📍</span>
+          <span class="map-pin pin-three">📍</span>
+        </div>
+
+        <div class="destination-card destination-top">
+          <span>🛍️</span>
+          <div>
+            <strong>Market run</strong>
+            <small>3 students going</small>
+          </div>
+        </div>
+
+        <div class="traveller-art">🧑🏻‍🤝‍🧑🏽</div>
+
+        <div class="destination-card destination-bottom">
+          <span>🚕</span>
+          <div>
+            <strong>Weekend plans</strong>
+            <small>Find your people</small>
+          </div>
+        </div>
+
+        <div class="hero-badge">SAME WAY?<br>GO TOGETHER.</div>
+      </div>
+    </section>
+
+    <!-- STATS -->
+    <section class="stats">
+      <div>
+        <strong id="tripStat">0</strong>
+        <span>Trips planned</span>
+      </div>
+      <div>
+        <strong id="seatStat">0</strong>
+        <span>Open seats</span>
+      </div>
+      <div>
+        <strong>1</strong>
+        <span>Campus community</span>
+      </div>
+    </section>
+
+    <!-- EXPLORE TRIPS -->
+    <section class="section" id="explore">
+      <div class="section-heading">
+        <div>
+          <span class="eyebrow">THE CAMPUS TRAVEL BOARD</span>
+          <h2>Who's heading out?</h2>
+          <p>Find a trip that matches your plans.</p>
+        </div>
+
+        <button class="btn btn-primary" id="exploreCreateBtn">+ Create a trip</button>
+      </div>
+
+      <div class="toolbar">
+        <div class="search-box">
+          <span>⌕</span>
+          <input type="search" id="searchInput" placeholder="Search destination, hostel, activity...">
+        </div>
+
+        <select id="sortSelect" aria-label="Sort trips">
+          <option value="soonest">Soonest first</option>
+          <option value="newest">Recently posted</option>
+        </select>
+      </div>
+
+      <div class="filter-row" id="filterRow">
+        <button class="filter-chip active" data-type="All">All outings</button>
+        <button class="filter-chip" data-type="Shopping">🛍️ Shopping</button>
+        <button class="filter-chip" data-type="Food">🍕 Food</button>
+        <button class="filter-chip" data-type="Travel">🚆 Travel</button>
+        <button class="filter-chip" data-type="Errands">📦 Errands</button>
+        <button class="filter-chip" data-type="Other">✨ Other</button>
+      </div>
+
+      <div class="trip-grid" id="tripGrid"></div>
+
+      <div class="empty-state hidden" id="emptyState">
+        <span>🧭</span>
+        <h3>No trips found</h3>
+        <p>Try another search or be the first to plan an outing!</p>
+        <button class="btn btn-outline" id="resetFilters">Clear filters</button>
+      </div>
+    </section>
+
+    <!-- MY TRIPS -->
+    <section class="my-trips-section" id="myTrips">
+      <div class="my-trips-inner">
+        <div class="section-heading">
+          <div>
+            <span class="eyebrow">YOUR TRAVEL PLANNER</span>
+            <h2>My trips & requests.</h2>
+            <p>Keep track of the plans you've created and joined.</p>
+          </div>
+        </div>
+
+        <div class="my-trip-tabs">
+          <button class="my-tab active" data-tab="created">Created by me</button>
+          <button class="my-tab" data-tab="joined">Joined trips</button>
+        </div>
+
+        <div id="myTripsList" class="my-trips-list"></div>
+      </div>
+    </section>
+
+    <!-- HOW IT WORKS -->
+    <section class="section how-section" id="how">
+      <div class="center-heading">
+        <span class="eyebrow">THREE SIMPLE STEPS</span>
+        <h2>Make the journey better.</h2>
+        <p>Finding someone going your way has never been easier.</p>
+      </div>
+
+      <div class="steps">
+        <article>
+          <div class="step-icon blue">🗺️</div>
+          <h3>Explore</h3>
+          <p>Browse outings planned by fellow students and find a matching destination.</p>
+        </article>
+
+        <article>
+          <div class="step-icon yellow">🙋</div>
+          <h3>Connect</h3>
+          <p>Send a request to join a trip and coordinate directly with the organiser.</p>
+        </article>
+
+        <article>
+          <div class="step-icon green">🚶</div>
+          <h3>Go together</h3>
+          <p>Confirm your plans, meet at the agreed location and enjoy the outing.</p>
+        </article>
+      </div>
+    </section>
+
+    <!-- SAFETY NOTE -->
+    <section class="safety-note">
+      <span>🛡️</span>
+      <div>
+        <strong>A quick safety reminder</strong>
+        <p>Meet in public places, verify plans directly, share your outing details with someone you trust, and never share sensitive personal information.</p>
+      </div>
+    </section>
+
+  </main>
+
+  <footer>
+    <a href="#" class="logo">
+      <span class="logo-icon">B</span>
+      BuddyRoute<span class="logo-dot">.</span>
+    </a>
+    <p>Same destination. Better company. 💙</p>
+    <small>Student community demo · 2026</small>
+  </footer>
+
+  <!-- CREATE TRIP MODAL -->
+  <div class="modal-backdrop" id="tripModal">
+    <div class="modal">
+      <button class="close-btn" data-close="tripModal">×</button>
+
+      <span class="eyebrow">LET'S MAKE A PLAN</span>
+      <h2>Plan an outing</h2>
+      <p class="modal-subtitle">Share your trip so others can join you.</p>
+
+      <form id="tripForm">
+
+        <label>Destination
+          <input type="text" id="destination" maxlength="55" placeholder="e.g. Urban Estate Market" required>
+        </label>
+
+        <div class="form-row">
+          <label>Outing type
+            <select id="tripType" required>
+              <option value="">Choose type</option>
+              <option>Shopping</option>
+              <option>Food</option>
+              <option>Travel</option>
+              <option>Errands</option>
+              <option>Other</option>
+            </select>
+          </label>
+
+          <label>Travel mode
+            <select id="travelMode">
+              <option>Walking</option>
+              <option>Auto / E-rickshaw</option>
+              <option>Cab</option>
+              <option>Bus</option>
+              <option>Train</option>
+              <option>Other</option>
+            </select>
+          </label>
+        </div>
+
+        <div class="form-row">
+          <label>Date
+            <input type="date" id="tripDate" required>
+          </label>
+
+          <label>Time
+            <input type="time" id="tripTime" required>
+          </label>
+        </div>
+
+        <div class="form-row">
+          <label>Available seats
+            <input type="number" id="tripSeats" min="1" max="20" value="2" required>
+          </label>
+
+          <label>Meet-up point
+            <input type="text" id="meetPoint" maxlength="45" placeholder="e.g. Main Gate" required>
+          </label>
+        </div>
+
+        <label>Your name
+          <input type="text" id="organiserName" maxlength="35" placeholder="Your name" required>
+        </label>
+
+        <label>Hostel / location
+          <input type="text" id="organiserLocation" maxlength="35" placeholder="e.g. Hostel J" required>
+        </label>
+
+        <label>Contact number
+          <input type="tel" id="organiserPhone" maxlength="10" pattern="[0-9]{10}" placeholder="10-digit number" required>
+        </label>
+
+        <label>Additional details <span class="optional">(optional)</span>
+          <textarea id="tripDescription" maxlength="160" rows="2" placeholder="Any details about your outing?"></textarea>
+        </label>
+
+        <button class="btn btn-primary submit-btn" type="submit">Publish my trip →</button>
+      </form>
+    </div>
+  </div>
+
+  <!-- TRIP DETAILS MODAL -->
+  <div class="modal-backdrop" id="detailsModal">
+    <div class="modal details-modal">
+      <button class="close-btn" data-close="detailsModal">×</button>
+      <div id="detailsContent"></div>
+    </div>
+  </div>
+
+  <div class="toast" id="toast"></div>
+
+  <script src="script.js"></script>
+</body>
+</html>
