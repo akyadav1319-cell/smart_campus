@@ -1,0 +1,197 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Campus Compass | Your Campus, Connected</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700;800&family=Outfit:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+</head>
+<body>
+
+    <nav class="navbar">
+        <a href="#" class="brand">
+            <span class="brand-icon">✦</span>
+            Campus<span>Compass</span>
+        </a>
+
+        <div class="nav-links">
+            <a href="#explore">Explore</a>
+            <a href="#categories">Categories</a>
+            <a href="#about">About</a>
+        </div>
+
+        <a href="#explore" class="nav-button">Find a Service ↗</a>
+    </nav>
+
+    <header class="hero">
+        <div class="hero-content">
+            <div class="eyebrow">
+                <span class="live-dot"></span>
+                YOUR CAMPUS, ONE PLACE
+            </div>
+
+            <h1>Everything on campus.<br>
+                <span>Just a search away.</span>
+            </h1>
+
+            <p class="hero-description">
+                From finding your favourite food spot to locating essential
+                services, discover everything your campus has to offer.
+            </p>
+
+            <div class="search-container">
+                <span class="search-icon">⌕</span>
+                <input type="text" id="searchInput"
+                    placeholder="Search shops, services, contacts...">
+                <button id="searchButton">Search</button>
+            </div>
+
+            <div class="hero-note">
+                <span>✦</span> Find places, people and services without the hassle.
+            </div>
+        </div>
+
+        <div class="hero-visual">
+            <div class="visual-card main-visual-card">
+                <div class="visual-top">
+                    <span>YOUR CAMPUS GUIDE</span>
+                    <span class="visual-menu">•••</span>
+                </div>
+
+                <div class="visual-illustration">🏫</div>
+
+                <h3>Campus at a glance</h3>
+                <p>Everything you need, right around the corner.</p>
+
+                <div class="visual-stats">
+                    <div>
+                        <strong id="totalPlaces">12</strong>
+                        <span>Places</span>
+                    </div>
+                    <div>
+                        <strong id="openPlaces">8</strong>
+                        <span>Open now</span>
+                    </div>
+                    <div>
+                        <strong>6</strong>
+                        <span>Categories</span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="floating-card floating-one">
+                <span>🖨️</span>
+                <div>
+                    <strong>Need a printout?</strong>
+                    <small>Find nearby shops</small>
+                </div>
+            </div>
+
+            <div class="floating-card floating-two">
+                <span>📍</span>
+                <div>
+                    <strong>Lost on campus?</strong>
+                    <small>Find your way around</small>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <main>
+        <section class="quick-info">
+            <div class="info-item">
+                <span class="info-icon">📍</span>
+                <div>
+                    <strong>Find locations</strong>
+                    <small>Explore campus places</small>
+                </div>
+            </div>
+
+            <div class="info-item">
+                <span class="info-icon">☎️</span>
+                <div>
+                    <strong>Important contacts</strong>
+                    <small>Reach the right people</small>
+                </div>
+            </div>
+
+            <div class="info-item">
+                <span class="info-icon">🕒</span>
+                <div>
+                    <strong>Check availability</strong>
+                    <small>Know before you go</small>
+                </div>
+            </div>
+        </section>
+
+        <section class="directory-section" id="explore">
+            <div class="section-heading">
+                <div>
+                    <span class="section-label">THE CAMPUS DIRECTORY</span>
+                    <h2>Explore your campus</h2>
+                    <p>Everything important, organised in one place.</p>
+                </div>
+
+                <span class="result-count" id="resultCount">12 places</span>
+            </div>
+
+            <div class="categories" id="categories">
+                <button class="category-btn active" data-category="All">✦ All places</button>
+                <button class="category-btn" data-category="Food">🍔 Food</button>
+                <button class="category-btn" data-category="Shopping">🛍️ Shopping</button>
+                <button class="category-btn" data-category="Services">🖨️ Services</button>
+                <button class="category-btn" data-category="Medical">🏥 Medical</button>
+                <button class="category-btn" data-category="Security">🛡️ Security</button>
+                <button class="category-btn" data-category="Campus">🏫 Campus</button>
+            </div>
+
+            <div class="directory-grid" id="directoryGrid"></div>
+
+            <div class="empty-state hidden" id="emptyState">
+                <span>🔎</span>
+                <h3>No places found</h3>
+                <p>Try another search or select a different category.</p>
+                <button id="resetSearch">Clear filters</button>
+            </div>
+        </section>
+
+        <section class="help-section" id="about">
+            <div>
+                <span class="section-label">MADE FOR STUDENT LIFE</span>
+                <h2>Less searching.<br>More exploring.</h2>
+                <p>
+                    Campus Compass brings essential campus information
+                    together so you can spend less time figuring things out
+                    and more time enjoying college.
+                </p>
+            </div>
+
+            <div class="help-decoration">
+                <span>🧭</span>
+                <strong>Your campus.<br>Your compass.</strong>
+            </div>
+        </section>
+    </main>
+
+    <footer>
+        <a href="#" class="brand">
+            <span class="brand-icon">✦</span>
+            Campus<span>Compass</span>
+        </a>
+        <p>Made with ♥ for easier campus life.</p>
+        <span>© 2026 Campus Compass</span>
+    </footer>
+
+    <div class="modal-overlay hidden" id="modalOverlay">
+        <div class="modal">
+            <button class="modal-close" id="modalClose">×</button>
+            <div id="modalContent"></div>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
