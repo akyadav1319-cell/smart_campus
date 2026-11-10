@@ -1,0 +1,264 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>NotesNest — Your Campus Knowledge Hub</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Manrope:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+  <aside class="sidebar">
+    <a href="#" class="brand">
+      <span class="brand-icon">N</span>
+      <span>notes<span class="brand-light">nest</span></span>
+    </a>
+
+    <div class="side-label">WORKSPACE</div>
+    <nav class="nav-links">
+      <button class="nav-link active" data-view="discover"><span>⌕</span> Discover</button>
+      <button class="nav-link" data-view="pyqs"><span>▤</span> PYQ Bank</button>
+      <button class="nav-link" data-view="labs"><span>⌘</span> Lab Experiences</button>
+      <button class="nav-link" data-view="bookmarks"><span>♡</span> Bookmarks</button>
+      <button class="nav-link" data-view="uploads"><span>↥</span> My Contributions</button>
+    </nav>
+
+    <div class="sidebar-bottom">
+      <div class="sidebar-note">
+        <div class="note-spark">✦</div>
+        <strong>Knowledge grows<br>when shared.</strong>
+        <p>Help someone ace their next sessional.</p>
+        <button id="sideUploadBtn">Share a resource ↗</button>
+      </div>
+      <div class="profile">
+        <div class="avatar">S</div>
+        <div>
+          <strong>Student Space</strong>
+          <small>Campus contributor</small>
+        </div>
+        <span class="profile-dots">•••</span>
+      </div>
+    </div>
+  </aside>
+
+  <main class="main">
+    <header class="topbar">
+      <div class="breadcrumb">Workspace <span>/</span> <strong id="breadcrumbName">Discover</strong></div>
+      <div class="top-actions">
+        <span class="status-dot"></span>
+        <span class="top-status">Student community</span>
+        <button class="icon-button" id="topUploadBtn" title="Upload resource">＋</button>
+      </div>
+    </header>
+
+    <section class="page">
+      <div class="welcome-row">
+        <div>
+          <div class="eyebrow"><span>✦</span> YOUR ACADEMIC SPACE</div>
+          <h1 id="pageTitle">Find your next <span>aha moment.</span></h1>
+          <p class="subtitle" id="pageSubtitle">A little help from your fellow students goes a long way.</p>
+        </div>
+        <div class="date-chip"><span>✧</span> Learn something today</div>
+      </div>
+
+      <div class="stats-grid">
+        <div class="stat-card">
+          <div class="stat-icon purple">▤</div>
+          <div><span>Total resources</span><strong id="resourceCount">0</strong></div>
+          <small>Shared knowledge</small>
+        </div>
+        <div class="stat-card">
+          <div class="stat-icon peach">✎</div>
+          <div><span>PYQ papers</span><strong id="pyqCount">0</strong></div>
+          <small>Past papers to practise</small>
+        </div>
+        <div class="stat-card">
+          <div class="stat-icon mint">⌘</div>
+          <div><span>Lab experiences</span><strong id="labCount">0</strong></div>
+          <small>Learn from the lab</small>
+        </div>
+        <div class="stat-card">
+          <div class="stat-icon yellow">♡</div>
+          <div><span>Your bookmarks</span><strong id="bookmarkCount">0</strong></div>
+          <small>Saved for later</small>
+        </div>
+      </div>
+
+      <div class="content-layout">
+        <section class="content-panel">
+          <div class="section-heading">
+            <div>
+              <div class="eyebrow" id="sectionEyebrow">THE COMMUNITY LIBRARY</div>
+              <h2 id="sectionTitle">Explore resources</h2>
+            </div>
+            <button class="primary-btn" id="addResourceBtn">＋ Add resource</button>
+          </div>
+
+          <div class="search-row">
+            <div class="search-box">
+              <span>⌕</span>
+              <input id="searchInput" type="search" placeholder="Search subjects, topics, or resources...">
+              <kbd>/</kbd>
+            </div>
+            <select id="semesterFilter" aria-label="Filter by semester">
+              <option value="all">All semesters</option>
+              <option value="1">Semester 1</option>
+              <option value="2">Semester 2</option>
+              <option value="3">Semester 3</option>
+              <option value="4">Semester 4</option>
+              <option value="5">Semester 5</option>
+              <option value="6">Semester 6</option>
+              <option value="7">Semester 7</option>
+              <option value="8">Semester 8</option>
+            </select>
+          </div>
+
+          <div class="filter-row" id="categoryFilters">
+            <button class="filter-chip selected" data-category="All">All resources</button>
+            <button class="filter-chip" data-category="Notes">Notes</button>
+            <button class="filter-chip" data-category="PYQ">PYQs</button>
+            <button class="filter-chip" data-category="PPT">Presentations</button>
+            <button class="filter-chip" data-category="Lab File">Lab files</button>
+            <button class="filter-chip" data-category="Study Guide">Study guides</button>
+          </div>
+
+          <div class="results-line">
+            <span id="resultsLabel">Showing all resources</span>
+            <span class="sort-label">SORT BY
+              <select id="sortFilter">
+                <option value="newest">Recently added</option>
+                <option value="az">Name A–Z</option>
+              </select>
+            </span>
+          </div>
+
+          <div class="resource-grid" id="resourceGrid"></div>
+          <div class="empty-state hidden" id="emptyState">
+            <div class="empty-icon">⌕</div>
+            <h3>Nothing in this nest yet</h3>
+            <p>Try changing your search or filters, or share the first resource.</p>
+            <button class="primary-btn" id="emptyAddBtn">＋ Add a resource</button>
+          </div>
+        </section>
+
+        <aside class="right-column">
+          <div class="tip-card">
+            <div class="tip-top"><span>✦ STUDY SMARTER</span><span>01 / 03</span></div>
+            <div class="tip-illustration">✎</div>
+            <h3>Small steps.<br>Big semester energy.</h3>
+            <p>Try revising one topic at a time. Consistency beats last-minute panic.</p>
+            <div class="tip-bottom"><span>YOUR DAILY REMINDER</span> ✧</div>
+          </div>
+
+          <div class="quick-card">
+            <div class="quick-heading">
+              <h3>Quick access</h3>
+              <span>↗</span>
+            </div>
+            <button class="quick-link" data-view="pyqs"><span class="quick-icon q-purple">▤</span><span><strong>Previous year papers</strong><small>Practise what matters</small></span><b>›</b></button>
+            <button class="quick-link" data-view="labs"><span class="quick-icon q-orange">⌘</span><span><strong>Lab experiences</strong><small>Viva & evaluation prep</small></span><b>›</b></button>
+            <button class="quick-link" data-view="bookmarks"><span class="quick-icon q-pink">♡</span><span><strong>Saved resources</strong><small>Your personal collection</small></span><b>›</b></button>
+          </div>
+
+          <div class="contribute-card">
+            <div class="contribute-icon">↥</div>
+            <div>
+              <strong>Have something useful?</strong>
+              <p>Your notes might be someone's lifesaver.</p>
+              <button id="contributeBtn">Contribute now ↗</button>
+            </div>
+          </div>
+        </aside>
+      </div>
+
+      <footer>Made for students, by students. <span>✦</span> NotesNest</footer>
+    </section>
+  </main>
+
+  <!-- Resource modal -->
+  <div class="modal-overlay hidden" id="resourceModal">
+    <div class="modal">
+      <div class="modal-header">
+        <div><div class="eyebrow">GROW THE LIBRARY</div><h2>Share a resource</h2></div>
+        <button class="close-btn" data-close="resourceModal">×</button>
+      </div>
+      <p class="modal-intro">Add something that could make another student's day a little easier.</p>
+      <form id="resourceForm">
+        <label>Resource title <input name="title" required maxlength="80" placeholder="e.g. Data Structures — Unit 2 Notes"></label>
+        <div class="form-row">
+          <label>Subject <input name="subject" required placeholder="e.g. Data Structures"></label>
+          <label>Semester
+            <select name="semester" required>
+              <option value="">Select</option>
+              <option>1</option><option>2</option><option>3</option><option>4</option>
+              <option>5</option><option>6</option><option>7</option><option>8</option>
+            </select>
+          </label>
+        </div>
+        <div class="form-row">
+          <label>Resource type
+            <select name="category" required>
+              <option>Notes</option><option>PYQ</option><option>PPT</option>
+              <option>Lab File</option><option>Study Guide</option>
+            </select>
+          </label>
+          <label>Branch
+            <select name="branch">
+              <option>All branches</option><option>ENC</option><option>COE</option>
+              <option>ECE</option><option>ME</option><option>Other</option>
+            </select>
+          </label>
+        </div>
+        <label>Description <textarea name="description" rows="3" maxlength="240" placeholder="What does this resource cover?"></textarea></label>
+        <label>Resource link <input name="link" type="url" placeholder="https://drive.google.com/..."></label>
+        <div class="form-note">This demo saves the resource details in your browser. Add a shareable link to let others access the file.</div>
+        <button class="primary-btn full-btn" type="submit">Publish resource ↗</button>
+      </form>
+    </div>
+  </div>
+
+  <!-- Lab experience modal -->
+  <div class="modal-overlay hidden" id="labModal">
+    <div class="modal">
+      <div class="modal-header">
+        <div><div class="eyebrow">PASS IT FORWARD</div><h2>Share a lab experience</h2></div>
+        <button class="close-btn" data-close="labModal">×</button>
+      </div>
+      <p class="modal-intro">Help someone walk into their next lab evaluation a little more prepared.</p>
+      <form id="labForm">
+        <label>Subject <input name="subject" required placeholder="e.g. Data Structures"></label>
+        <div class="form-row">
+          <label>Experiment / topic <input name="experiment" required placeholder="e.g. Linked Lists"></label>
+          <label>Semester
+            <select name="semester" required>
+              <option value="">Select</option>
+              <option>1</option><option>2</option><option>3</option><option>4</option>
+              <option>5</option><option>6</option><option>7</option><option>8</option>
+            </select>
+          </label>
+        </div>
+        <label>Questions asked <textarea name="questions" required rows="4" placeholder="1. Explain insertion in a linked list&#10;2. What is the time complexity?"></textarea></label>
+        <label>Additional tips <textarea name="tips" rows="2" placeholder="Anything else students should know?"></textarea></label>
+        <button class="primary-btn full-btn" type="submit">Share experience ↗</button>
+      </form>
+    </div>
+  </div>
+
+  <!-- Details modal -->
+  <div class="modal-overlay hidden" id="detailsModal">
+    <div class="modal">
+      <div class="modal-header">
+        <div><div class="eyebrow">RESOURCE DETAILS</div><h2 id="detailsTitle">Resource</h2></div>
+        <button class="close-btn" data-close="detailsModal">×</button>
+      </div>
+      <div id="detailsContent"></div>
+    </div>
+  </div>
+
+  <div class="toast" id="toast"></div>
+  <script src="script.js"></script>
+</body>
+</html>
