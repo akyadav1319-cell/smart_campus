@@ -1,0 +1,354 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>LibrarySeat Guardian</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Manrope:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+  <aside class="sidebar">
+    <a href="#" class="brand">
+      <span class="brand-icon">L</span>
+      <span>library<span class="brand-light">guardian</span></span>
+    </a>
+
+    <div class="side-label">MANAGEMENT</div>
+
+    <nav class="nav-links">
+      <button class="nav-link active" data-view="dashboard"><span>▦</span> Overview</button>
+      <button class="nav-link" data-view="reservations"><span>◷</span> My Reservations</button>
+      <button class="nav-link" data-view="register"><span>＋</span> Register a Seat</button>
+      <button class="nav-link" data-view="librarian"><span>▤</span> Librarian Panel</button>
+      <button class="nav-link" data-view="activity"><span>↻</span> Activity Log</button>
+    </nav>
+
+    <div class="sidebar-bottom">
+      <div class="sidebar-note">
+        <div class="note-icon">✦</div>
+        <strong>Your seat.<br>Your responsibility.</strong>
+        <p>Remember to release your seat when you're done.</p>
+        <button id="sidebarRegister">Register a seat ↗</button>
+      </div>
+
+      <div class="profile">
+        <div class="avatar">S</div>
+        <div>
+          <strong>Student Space</strong>
+          <small>Library member</small>
+        </div>
+        <span class="profile-dots">•••</span>
+      </div>
+    </div>
+  </aside>
+
+  <main class="main">
+    <header class="topbar">
+      <div class="breadcrumb">
+        Library Management <span>/</span> <strong id="breadcrumbName">Overview</strong>
+      </div>
+
+      <div class="top-actions">
+        <span class="live-dot"></span>
+        <span class="top-status">System active</span>
+        <button class="icon-button" id="headerRegister" title="Register a seat">＋</button>
+      </div>
+    </header>
+
+    <section class="page">
+
+      <div class="welcome-row">
+        <div>
+          <div class="eyebrow"><span>✦</span> SMART LIBRARY MANAGEMENT</div>
+          <h1 id="pageTitle">Your space. <span>Your focus.</span></h1>
+          <p class="subtitle" id="pageSubtitle">Keep track of your seat, belongings and study time.</p>
+        </div>
+        <div class="date-chip"><span>◷</span> Time matters</div>
+      </div>
+
+      <!-- STATS -->
+      <div class="stats-grid">
+        <div class="stat-card">
+          <div class="stat-icon blue">▦</div>
+          <div>
+            <span>Registered seats</span>
+            <strong id="totalCount">0</strong>
+          </div>
+          <small>All reservations</small>
+        </div>
+
+        <div class="stat-card">
+          <div class="stat-icon green">✓</div>
+          <div>
+            <span>Active</span>
+            <strong id="activeCount">0</strong>
+          </div>
+          <small>Currently within time</small>
+        </div>
+
+        <div class="stat-card">
+          <div class="stat-icon orange">◷</div>
+          <div>
+            <span>Reminders due</span>
+            <strong id="dueCount">0</strong>
+          </div>
+          <small>Time almost up</small>
+        </div>
+
+        <div class="stat-card">
+          <div class="stat-icon red">!</div>
+          <div>
+            <span>Overdue</span>
+            <strong id="overdueCount">0</strong>
+          </div>
+          <small>Need attention</small>
+        </div>
+      </div>
+
+      <div class="content-layout">
+
+        <!-- MAIN CONTENT -->
+        <section class="content-panel">
+          <div class="section-heading">
+            <div>
+              <div class="eyebrow" id="sectionEyebrow">YOUR LIBRARY SPACE</div>
+              <h2 id="sectionTitle">Seat overview</h2>
+            </div>
+            <button class="primary-btn" id="mainAction">＋ Register seat</button>
+          </div>
+
+          <!-- Dashboard overview -->
+          <div id="dashboardView">
+
+            <div class="overview-banner">
+              <div>
+                <span class="banner-label">LIBRARY CHECK-IN</span>
+                <h3>A little organisation<br>goes a long way.</h3>
+                <p>Keep your study space organised and your belongings accounted for.</p>
+                <button id="bannerRegister">Register your seat ↗</button>
+              </div>
+              <div class="banner-art">
+                <div class="art-circle">▤</div>
+                <div class="art-line"></div>
+                <div class="art-small">FOCUS MODE</div>
+              </div>
+            </div>
+
+            <div class="subsection-heading">
+              <h3>Recent reservations</h3>
+              <button class="text-btn" data-go="reservations">View all ↗</button>
+            </div>
+
+            <div id="recentReservations" class="reservation-list"></div>
+
+            <div class="subsection-heading activity-heading">
+              <h3>Recent activity</h3>
+              <button class="text-btn" data-go="activity">View log ↗</button>
+            </div>
+
+            <div id="recentActivity" class="activity-list"></div>
+          </div>
+
+          <!-- Reservations view -->
+          <div id="reservationsView" class="hidden">
+            <div class="toolbar">
+              <div class="search-box">
+                <span>⌕</span>
+                <input id="reservationSearch" placeholder="Search by seat or floor...">
+              </div>
+              <select id="reservationFilter">
+                <option value="all">All statuses</option>
+                <option value="active">Active</option>
+                <option value="due">Reminder due</option>
+                <option value="overdue">Overdue</option>
+                <option value="released">Released</option>
+              </select>
+            </div>
+            <div id="allReservations" class="reservation-list"></div>
+          </div>
+
+          <!-- Register view -->
+          <div id="registerView" class="hidden">
+            <div class="register-intro">
+              <div class="register-icon">▦</div>
+              <div>
+                <h3>Reserve your study space</h3>
+                <p>Register your seat and set a reminder so you don't lose track of time.</p>
+              </div>
+            </div>
+
+            <form id="registerForm">
+              <label>Your name
+                <input name="name" required placeholder="Enter your name">
+              </label>
+
+              <label>Roll number
+                <input name="roll" required placeholder="Enter your roll number">
+              </label>
+
+              <div class="form-row">
+                <label>Library floor
+                  <select name="floor" required>
+                    <option value="">Select floor</option>
+                    <option>Ground Floor</option>
+                    <option>First Floor</option>
+                    <option>Second Floor</option>
+                    <option>Third Floor</option>
+                  </select>
+                </label>
+
+                <label>Seat number
+                  <input name="seat" required placeholder="e.g. A-12">
+                </label>
+              </div>
+
+              <label>Belongings left at the seat
+                <input name="belongings" required placeholder="e.g. Books, notebook, water bottle">
+              </label>
+
+              <label>Reminder duration
+                <select name="duration">
+                  <option value="45">45 minutes</option>
+                  <option value="60">60 minutes</option>
+                  <option value="90">90 minutes</option>
+                </select>
+              </label>
+
+              <div class="form-note">
+                ✦ Your reminder countdown begins as soon as you register. Keep this page open to receive live alerts.
+              </div>
+
+              <button class="primary-btn full-btn" type="submit">Confirm registration ↗</button>
+            </form>
+          </div>
+
+          <!-- Librarian view -->
+          <div id="librarianView" class="hidden">
+            <div class="librarian-banner">
+              <div class="librarian-icon">▤</div>
+              <div>
+                <h3>Librarian control panel</h3>
+                <p>Monitor registrations and manage belongings left behind.</p>
+              </div>
+            </div>
+
+            <div class="toolbar">
+              <div class="search-box">
+                <span>⌕</span>
+                <input id="librarianSearch" placeholder="Search student or seat...">
+              </div>
+              <select id="librarianFilter">
+                <option value="all">All registrations</option>
+                <option value="active">Active</option>
+                <option value="due">Reminder due</option>
+                <option value="overdue">Overdue</option>
+                <option value="released">Released</option>
+              </select>
+            </div>
+
+            <div id="librarianReservations" class="reservation-list"></div>
+          </div>
+
+          <!-- Activity view -->
+          <div id="activityView" class="hidden">
+            <div class="subsection-heading">
+              <h3>Activity history</h3>
+              <span class="history-label">LATEST FIRST</span>
+            </div>
+            <div id="allActivity" class="activity-list"></div>
+          </div>
+
+        </section>
+
+        <!-- RIGHT COLUMN -->
+        <aside class="right-column">
+
+          <div class="clock-card">
+            <div class="clock-label">CURRENT TIME</div>
+            <div id="clock" class="clock">--:--:--</div>
+            <div id="clockDate" class="clock-date">Loading date...</div>
+            <div class="clock-line"></div>
+            <div class="clock-foot"><span class="clock-dot"></span> LIVE SYSTEM CLOCK</div>
+          </div>
+
+          <div class="quick-card">
+            <div class="quick-heading">
+              <h3>Quick actions</h3>
+              <span>✦</span>
+            </div>
+
+            <button class="quick-link" data-go="register">
+              <span class="quick-icon q-blue">＋</span>
+              <span><strong>Register a seat</strong><small>Start a new reservation</small></span>
+              <b>›</b>
+            </button>
+
+            <button class="quick-link" data-go="reservations">
+              <span class="quick-icon q-green">◷</span>
+              <span><strong>My reservations</strong><small>Check your active seats</small></span>
+              <b>›</b>
+            </button>
+
+            <button class="quick-link" data-go="librarian">
+              <span class="quick-icon q-orange">▤</span>
+              <span><strong>Staff panel</strong><small>Manage belongings</small></span>
+              <b>›</b>
+            </button>
+          </div>
+
+          <div class="reminder-card">
+            <div class="reminder-symbol">!</div>
+            <div>
+              <strong>Don't forget your things!</strong>
+              <p>Before leaving, check your belongings and release your seat.</p>
+            </div>
+          </div>
+
+        </aside>
+      </div>
+
+      <footer>Designed for smarter study spaces. <span>✦</span> LibrarySeat Guardian</footer>
+    </section>
+  </main>
+
+  <!-- DETAILS MODAL -->
+  <div class="modal-overlay hidden" id="detailsModal">
+    <div class="modal">
+      <div class="modal-header">
+        <div>
+          <div class="eyebrow">RESERVATION DETAILS</div>
+          <h2 id="detailsTitle">Seat details</h2>
+        </div>
+        <button class="close-btn" data-close="detailsModal">×</button>
+      </div>
+      <div id="detailsContent"></div>
+    </div>
+  </div>
+
+  <!-- CONFIRM MODAL -->
+  <div class="modal-overlay hidden" id="confirmModal">
+    <div class="modal confirm-modal">
+      <div class="modal-header">
+        <div>
+          <div class="eyebrow">RELEASE SEAT</div>
+          <h2>Are you done studying?</h2>
+        </div>
+        <button class="close-btn" data-close="confirmModal">×</button>
+      </div>
+      <p class="modal-description">Make sure you've collected all your belongings before releasing this seat.</p>
+      <div class="confirm-actions">
+        <button class="secondary-btn" data-close="confirmModal">Go back</button>
+        <button class="primary-btn" id="confirmRelease">Yes, release seat</button>
+      </div>
+    </div>
+  </div>
+
+  <div class="toast" id="toast"></div>
+
+  <script src="script.js"></script>
+</body>
+</html>
