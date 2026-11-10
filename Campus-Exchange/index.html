@@ -1,0 +1,311 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>CampusExchange — Find. Sell. Reuse.</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700;800&family=Outfit:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+  <header class="navbar">
+    <a href="#" class="logo">
+      <span class="logo-icon">C</span>
+      Campus<span>Exchange.</span>
+    </a>
+
+    <nav>
+      <a href="#marketplace">Marketplace</a>
+      <a href="#categories">Categories</a>
+      <a href="#how">How it works</a>
+    </nav>
+
+    <div class="nav-actions">
+      <button class="icon-btn" id="wishlistNav" aria-label="View wishlist">♡</button>
+      <button class="btn btn-dark" id="sellNav">+ Sell an item</button>
+    </div>
+  </header>
+
+  <main>
+
+    <!-- HERO -->
+    <section class="hero">
+      <div class="hero-content">
+        <span class="eyebrow">♻️ THE STUDENT MARKETPLACE</span>
+        <h1>Good finds.<br><span>Better prices.</span></h1>
+        <p>One student's unused treasure is another student's perfect find. Buy, sell and exchange essentials right here on campus.</p>
+
+        <div class="hero-actions">
+          <a href="#marketplace" class="btn btn-dark">Explore marketplace →</a>
+          <button class="btn btn-light" id="heroSellBtn">Start selling</button>
+        </div>
+
+        <div class="hero-trust">
+          <span>📚</span>
+          <span>Student-to-student. Budget-friendly. Campus-focused.</span>
+        </div>
+      </div>
+
+      <div class="hero-visual">
+        <div class="hero-circle"></div>
+        <div class="hero-product product-one">📚</div>
+        <div class="hero-product product-two">🎧</div>
+        <div class="hero-product product-three">🪴</div>
+
+        <div class="hero-price price-one">
+          <span>📖</span>
+          <div><strong>Textbooks</strong><small>Starting at ₹99</small></div>
+        </div>
+
+        <div class="hero-price price-two">
+          <span>🎧</span>
+          <div><strong>Accessories</strong><small>Pre-loved finds</small></div>
+        </div>
+
+        <div class="hero-sticker">BUY SMART.<br>SELL EASY.</div>
+      </div>
+    </section>
+
+    <!-- MARKET STATS -->
+    <section class="stats">
+      <div><strong id="totalListings">0</strong><span>Items listed</span></div>
+      <div><strong>₹0</strong><span>Platform fees</span></div>
+      <div><strong>100%</strong><span>Student focused</span></div>
+      <div><strong>♻️</strong><span>Reuse more, waste less</span></div>
+    </section>
+
+    <!-- CATEGORIES -->
+    <section class="section categories-section" id="categories">
+      <div class="section-heading">
+        <div>
+          <span class="eyebrow">EXPLORE THE SHELVES</span>
+          <h2>Shop by category.</h2>
+          <p>Whatever you need, there's probably a student selling it.</p>
+        </div>
+      </div>
+
+      <div class="category-grid">
+        <button class="category-tile" data-category="Books">
+          <span class="category-emoji">📚</span>
+          <strong>Books & Notes</strong>
+          <small>Study essentials</small>
+        </button>
+
+        <button class="category-tile" data-category="Electronics">
+          <span class="category-emoji">🎧</span>
+          <strong>Electronics</strong>
+          <small>Gadgets & accessories</small>
+        </button>
+
+        <button class="category-tile" data-category="Hostel Essentials">
+          <span class="category-emoji">🛏️</span>
+          <strong>Hostel Essentials</strong>
+          <small>Room & daily needs</small>
+        </button>
+
+        <button class="category-tile" data-category="Fashion">
+          <span class="category-emoji">👕</span>
+          <strong>Fashion</strong>
+          <small>Clothes & accessories</small>
+        </button>
+
+        <button class="category-tile" data-category="Stationery">
+          <span class="category-emoji">✏️</span>
+          <strong>Stationery</strong>
+          <small>Academic supplies</small>
+        </button>
+
+        <button class="category-tile" data-category="Other">
+          <span class="category-emoji">✨</span>
+          <strong>Other finds</strong>
+          <small>Everything else</small>
+        </button>
+      </div>
+    </section>
+
+    <!-- MARKETPLACE -->
+    <section class="section marketplace-section" id="marketplace">
+      <div class="section-heading">
+        <div>
+          <span class="eyebrow">THE CAMPUS MARKET</span>
+          <h2>Fresh finds for you.</h2>
+          <p>Browse items listed by fellow students.</p>
+        </div>
+
+        <button class="btn btn-dark" id="sellMarketBtn">+ List a product</button>
+      </div>
+
+      <div class="market-toolbar">
+        <div class="search-box">
+          <span>⌕</span>
+          <input type="search" id="searchInput" placeholder="Search books, gadgets, hostel essentials...">
+        </div>
+
+        <select id="sortSelect" aria-label="Sort products">
+          <option value="newest">Recently listed</option>
+          <option value="low">Price: Low to high</option>
+          <option value="high">Price: High to low</option>
+        </select>
+
+        <select id="conditionFilter" aria-label="Filter by condition">
+          <option value="All">All conditions</option>
+          <option value="Like new">Like new</option>
+          <option value="Good">Good</option>
+          <option value="Used">Used</option>
+        </select>
+      </div>
+
+      <div class="filter-row" id="filterRow">
+        <button class="filter-chip active" data-category="All">All products</button>
+        <button class="filter-chip" data-category="Books">Books</button>
+        <button class="filter-chip" data-category="Electronics">Electronics</button>
+        <button class="filter-chip" data-category="Hostel Essentials">Hostel essentials</button>
+        <button class="filter-chip" data-category="Fashion">Fashion</button>
+        <button class="filter-chip" data-category="Stationery">Stationery</button>
+        <button class="filter-chip" data-category="Other">Other</button>
+      </div>
+
+      <div class="product-grid" id="productGrid"></div>
+
+      <div class="empty-state hidden" id="emptyState">
+        <span>🛍️</span>
+        <h3>No products found</h3>
+        <p>Try another search or change your filters.</p>
+        <button class="btn btn-outline" id="resetFilters">Clear filters</button>
+      </div>
+    </section>
+
+    <!-- WISHLIST -->
+    <section class="wishlist-banner">
+      <div>
+        <span class="eyebrow">YOUR LITTLE COLLECTION</span>
+        <h2>Found something you love?</h2>
+        <p>Save products to your wishlist and come back to them later.</p>
+      </div>
+      <button class="btn btn-dark" id="viewWishlistBtn">♡ View wishlist</button>
+    </section>
+
+    <!-- HOW IT WORKS -->
+    <section class="section how-section" id="how">
+      <div class="center-heading">
+        <span class="eyebrow">EASY AS ONE, TWO, THREE</span>
+        <h2>Marketplace made simple.</h2>
+        <p>No complicated process. Just students helping students.</p>
+      </div>
+
+      <div class="steps">
+        <article>
+          <span class="step-icon">🔍</span>
+          <h3>Discover</h3>
+          <p>Browse affordable pre-loved products from your campus community.</p>
+        </article>
+
+        <article>
+          <span class="step-icon">💬</span>
+          <h3>Connect</h3>
+          <p>Contact the seller directly and discuss the product and exchange.</p>
+        </article>
+
+        <article>
+          <span class="step-icon">♻️</span>
+          <h3>Exchange</h3>
+          <p>Meet on campus, complete your exchange and give things a new life.</p>
+        </article>
+      </div>
+    </section>
+
+  </main>
+
+  <footer>
+    <a href="#" class="logo">
+      <span class="logo-icon">C</span>
+      Campus<span>Exchange.</span>
+    </a>
+    <p>Good things deserve a second home. 💚</p>
+    <small>Student marketplace demo · 2026</small>
+  </footer>
+
+  <!-- SELL PRODUCT MODAL -->
+  <div class="modal-backdrop" id="sellModal">
+    <div class="modal">
+      <button class="close-btn" data-close="sellModal">×</button>
+      <span class="eyebrow">GIVE YOUR ITEM A NEW HOME</span>
+      <h2>Sell an item</h2>
+      <p class="modal-subtitle">List your product for fellow students to discover.</p>
+
+      <form id="sellForm">
+        <label>Product name
+          <input type="text" id="productName" maxlength="55" placeholder="e.g. Engineering Mathematics textbook" required>
+        </label>
+
+        <div class="form-row">
+          <label>Category
+            <select id="productCategory" required>
+              <option value="">Choose category</option>
+              <option>Books</option>
+              <option>Electronics</option>
+              <option>Hostel Essentials</option>
+              <option>Fashion</option>
+              <option>Stationery</option>
+              <option>Other</option>
+            </select>
+          </label>
+
+          <label>Condition
+            <select id="productCondition" required>
+              <option>Like new</option>
+              <option>Good</option>
+              <option>Used</option>
+            </select>
+          </label>
+        </div>
+
+        <div class="form-row">
+          <label>Selling price (₹)
+            <input type="number" id="productPrice" min="1" max="1000000" placeholder="e.g. 250" required>
+          </label>
+
+          <label>Original price (₹) <span class="optional">Optional</span>
+            <input type="number" id="originalPrice" min="1" max="1000000" placeholder="e.g. 500">
+          </label>
+        </div>
+
+        <label>Seller name
+          <input type="text" id="sellerName" maxlength="35" placeholder="Your name" required>
+        </label>
+
+        <div class="form-row">
+          <label>Hostel / location
+            <input type="text" id="sellerLocation" maxlength="35" placeholder="e.g. Hostel J" required>
+          </label>
+
+          <label>Contact number
+            <input type="tel" id="sellerPhone" maxlength="10" pattern="[0-9]{10}" placeholder="10-digit number" required>
+          </label>
+        </div>
+
+        <label>Description
+          <textarea id="productDescription" rows="3" maxlength="180" placeholder="Tell buyers about your product..."></textarea>
+        </label>
+
+        <button class="btn btn-dark submit-btn" type="submit">Publish listing →</button>
+      </form>
+    </div>
+  </div>
+
+  <!-- PRODUCT DETAILS MODAL -->
+  <div class="modal-backdrop" id="detailsModal">
+    <div class="modal details-modal">
+      <button class="close-btn" data-close="detailsModal">×</button>
+      <div id="detailsContent"></div>
+    </div>
+  </div>
+
+  <div class="toast" id="toast"></div>
+
+  <script src="script.js"></script>
+</body>
+</html>
