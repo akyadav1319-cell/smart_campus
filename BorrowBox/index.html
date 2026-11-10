@@ -1,0 +1,253 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>BorrowBox — Share More, Buy Less</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700;800&family=Outfit:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+  <header class="navbar">
+    <a href="#" class="logo"><span class="logo-icon">B</span> BorrowBox<span class="dot">.</span></a>
+    <nav>
+      <a href="#browse">Browse</a>
+      <a href="#requests">Requests</a>
+      <a href="#how">How it works</a>
+    </nav>
+    <button class="btn btn-primary" id="openListBtn">+ List an item</button>
+  </header>
+
+  <main>
+    <section class="hero">
+      <div class="hero-content">
+        <span class="eyebrow">🎓 THE CAMPUS SHARING COMMUNITY</span>
+        <h1>Need it for a day?<br><span>Borrow it away.</span></h1>
+        <p>Why buy something you'll use once? Borrow essentials from fellow students and lend the things gathering dust in your room.</p>
+        <div class="hero-actions">
+          <a href="#browse" class="btn btn-primary">Explore items <span>→</span></a>
+          <button class="btn btn-outline" id="heroListBtn">Share something</button>
+        </div>
+        <div class="hero-note">
+          <span class="avatars">👩🏻‍🎓 👨🏽‍🎓 👩🏾‍🎓</span>
+          <span>A little sharing goes a long way.</span>
+        </div>
+      </div>
+      <div class="hero-visual">
+        <div class="floating-card card-top">
+          <span class="float-icon">📐</span>
+          <div><strong>Scientific Calculator</strong><small>Available to borrow</small></div>
+          <span class="available-dot"></span>
+        </div>
+        <div class="hero-illustration">
+          <div class="illustration-circle"></div>
+          <div class="box-art">📦</div>
+          <div class="spark spark-one">✦</div>
+          <div class="spark spark-two">✧</div>
+          <div class="spark spark-three">✦</div>
+          <div class="art-caption">Borrow. Return. Repeat.</div>
+        </div>
+        <div class="floating-card card-bottom">
+          <span class="float-icon">☂️</span>
+          <div><strong>Umbrella</strong><small>Listed 10 min ago</small></div>
+          <span class="available-dot"></span>
+        </div>
+      </div>
+    </section>
+
+    <section class="stats">
+      <div><strong id="itemStat">0</strong><span>Items listed</span></div>
+      <div><strong id="requestStat">0</strong><span>Borrow requests</span></div>
+      <div><strong>100%</strong><span>Campus community</span></div>
+    </section>
+
+    <section class="section" id="browse">
+      <div class="section-heading">
+        <div>
+          <span class="eyebrow">THE COMMUNITY SHELF</span>
+          <h2>Find what you need.</h2>
+          <p>Useful things, shared by students like you.</p>
+        </div>
+        <button class="btn btn-primary" id="browseListBtn">+ Add your item</button>
+      </div>
+
+      <div class="toolbar">
+        <div class="search-box">
+          <span>⌕</span>
+          <input type="search" id="searchInput" placeholder="Search calculators, books, umbrellas...">
+        </div>
+        <select id="sortSelect" aria-label="Sort items">
+          <option value="newest">Recently added</option>
+          <option value="az">Name: A to Z</option>
+        </select>
+      </div>
+
+      <div class="categories" id="categoryFilters">
+        <button class="category active" data-category="All">All items</button>
+        <button class="category" data-category="Study">📚 Study</button>
+        <button class="category" data-category="Electronics">🔌 Electronics</button>
+        <button class="category" data-category="Clothing">🥼 Clothing</button>
+        <button class="category" data-category="Daily Essentials">☂️ Daily essentials</button>
+        <button class="category" data-category="Sports">🏸 Sports</button>
+      </div>
+
+      <div class="item-grid" id="itemGrid"></div>
+      <div class="empty-state hidden" id="emptyState">
+        <div>🔎</div>
+        <h3>No items found</h3>
+        <p>Try another search or category. The shelf might have something else!</p>
+        <button class="btn btn-outline" id="resetFilters">Clear filters</button>
+      </div>
+    </section>
+
+    <section class="request-section" id="requests">
+      <div class="request-intro">
+        <span class="eyebrow">CAN'T FIND IT?</span>
+        <h2>Put out a<br><span>little request.</span></h2>
+        <p>Looking for something specific? Let the campus community know. Someone might have exactly what you need.</p>
+        <button class="btn btn-light" id="openRequestBtn">Post a request +</button>
+      </div>
+      <div class="request-board">
+        <div class="board-heading">
+          <div><span class="board-dot"></span> STUDENTS LOOKING FOR</div>
+          <span id="requestCount">0 requests</span>
+        </div>
+        <div id="requestList" class="request-list"></div>
+      </div>
+    </section>
+
+    <section class="section how-section" id="how">
+      <div class="center-heading">
+        <span class="eyebrow">SIMPLE AS THAT</span>
+        <h2>Three steps. Zero hassle.</h2>
+        <p>Make campus life a little easier for everyone.</p>
+      </div>
+      <div class="steps">
+        <article class="step-card">
+          <div class="step-icon lavender">🔍</div>
+          <span class="step-number">01</span>
+          <h3>Find an item</h3>
+          <p>Browse the shelf and find what another student is happy to lend.</p>
+        </article>
+        <article class="step-card">
+          <div class="step-icon peach">💬</div>
+          <span class="step-number">02</span>
+          <h3>Get in touch</h3>
+          <p>Contact the owner and agree on when and where to exchange it.</p>
+        </article>
+        <article class="step-card">
+          <div class="step-icon mint">🤝</div>
+          <span class="step-number">03</span>
+          <h3>Borrow & return</h3>
+          <p>Use it, take care of it, and return it as agreed. Easy!</p>
+        </article>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <a href="#" class="logo"><span class="logo-icon">B</span> BorrowBox<span class="dot">.</span></a>
+    <p>Sharing is caring. Especially during exam season. 💜</p>
+    <span>Student community demo · 2026</span>
+  </footer>
+
+  <!-- LIST ITEM MODAL -->
+  <div class="modal-backdrop" id="listModal">
+    <div class="modal">
+      <button class="close-btn" data-close="listModal" aria-label="Close">×</button>
+      <span class="eyebrow">GIVE SOMETHING A SECOND LIFE</span>
+      <h2>List an item</h2>
+      <p class="modal-subtitle">Have something another student could use?</p>
+      <form id="listForm">
+        <label>Item name<input type="text" id="itemName" placeholder="e.g. Casio scientific calculator" maxlength="55" required></label>
+        <div class="form-row">
+          <label>Category
+            <select id="itemCategory" required>
+              <option value="">Choose category</option>
+              <option>Study</option>
+              <option>Electronics</option>
+              <option>Clothing</option>
+              <option>Daily Essentials</option>
+              <option>Sports</option>
+            </select>
+          </label>
+          <label>Condition
+            <select id="itemCondition" required>
+              <option>Good</option>
+              <option>Like new</option>
+              <option>Used</option>
+            </select>
+          </label>
+        </div>
+        <label>Owner's name<input type="text" id="ownerName" placeholder="Your name" maxlength="35" required></label>
+        <div class="form-row">
+          <label>Hostel / location<input type="text" id="itemLocation" placeholder="e.g. Hostel J" maxlength="35" required></label>
+          <label>Contact number<input type="tel" id="ownerPhone" placeholder="10-digit number" pattern="[0-9]{10}" maxlength="10" required></label>
+        </div>
+        <label>Available for
+          <select id="itemDuration">
+            <option>1 day</option>
+            <option>2–3 days</option>
+            <option>1 week</option>
+            <option>Flexible</option>
+          </select>
+        </label>
+        <label>Short description <span class="optional">(optional)</span><textarea id="itemDescription" rows="2" maxlength="140" placeholder="Any details the borrower should know?"></textarea></label>
+        <button class="btn btn-primary submit-btn" type="submit">Put it on the shelf →</button>
+      </form>
+    </div>
+  </div>
+
+  <!-- REQUEST MODAL -->
+  <div class="modal-backdrop" id="requestModal">
+    <div class="modal">
+      <button class="close-btn" data-close="requestModal" aria-label="Close">×</button>
+      <span class="eyebrow">ASK THE COMMUNITY</span>
+      <h2>Post a request</h2>
+      <p class="modal-subtitle">Tell everyone what you're looking for.</p>
+      <form id="requestForm">
+        <label>What do you need?<input type="text" id="requestItem" maxlength="55" placeholder="e.g. Lab coat for tomorrow" required></label>
+        <label>Category
+          <select id="requestCategory" required>
+            <option value="">Choose category</option>
+            <option>Study</option>
+            <option>Electronics</option>
+            <option>Clothing</option>
+            <option>Daily Essentials</option>
+            <option>Sports</option>
+            <option>Other</option>
+          </select>
+        </label>
+        <div class="form-row">
+          <label>Your name<input type="text" id="requesterName" maxlength="35" placeholder="Your name" required></label>
+          <label>Hostel / location<input type="text" id="requesterLocation" maxlength="35" placeholder="e.g. Hostel H" required></label>
+        </div>
+        <label>Needed for
+          <select id="requestDuration">
+            <option>Today</option>
+            <option>Tomorrow</option>
+            <option>2–3 days</option>
+            <option>1 week</option>
+            <option>Flexible</option>
+          </select>
+        </label>
+        <button class="btn btn-primary submit-btn" type="submit">Post my request →</button>
+      </form>
+    </div>
+  </div>
+
+  <!-- ITEM DETAILS MODAL -->
+  <div class="modal-backdrop" id="detailsModal">
+    <div class="modal details-modal">
+      <button class="close-btn" data-close="detailsModal" aria-label="Close">×</button>
+      <div id="detailsContent"></div>
+    </div>
+  </div>
+
+  <div class="toast" id="toast"></div>
+  <script src="script.js"></script>
+</body>
+</html>
