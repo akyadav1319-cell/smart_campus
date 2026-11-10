@@ -1,0 +1,364 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>PawTrack — Campus Animal Welfare</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700;800&family=Playfair+Display:wght@500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<header class="navbar">
+    <a href="#" class="brand">
+        <span class="paw-logo">🐾</span>
+        <span>pawtrack<span class="brand-dot">.</span></span>
+    </a>
+
+    <nav>
+        <a href="#animals">Campus animals</a>
+        <a href="#reports">Reports</a>
+        <a href="#about">About</a>
+    </nav>
+
+    <button class="report-btn" onclick="openReportModal()">+ Report an issue</button>
+</header>
+
+<main>
+
+    <!-- HERO -->
+
+    <section class="hero">
+        <div class="hero-content">
+            <span class="eyebrow">♡ A CAMPUS THAT CARES</span>
+            <h1>Every paw<br>has a <em>place.</em></h1>
+            <p>
+                A community-powered space to care for the animals
+                who call our campus home. Report, connect and make
+                a difference — one little paw at a time.
+            </p>
+
+            <div class="hero-actions">
+                <a href="#animals" class="primary-btn">Meet our animals →</a>
+                <button class="outline-btn" onclick="openReportModal()">Report an animal</button>
+            </div>
+
+            <div class="hero-note">
+                <span>♥</span> Small acts of kindness make a big difference.
+            </div>
+        </div>
+
+        <div class="hero-visual">
+            <div class="hero-circle"></div>
+            <div class="hero-animal">🐕</div>
+            <div class="floating-note note-one">
+                <span>♡</span>
+                <div><strong>Be kind.</strong><small>Every animal matters.</small></div>
+            </div>
+            <div class="floating-note note-two">
+                <span>🐾</span>
+                <div><strong>Community care</strong><small>One campus, many friends.</small></div>
+            </div>
+            <div class="hero-sparkle">✦</div>
+        </div>
+    </section>
+
+    <!-- STATS -->
+
+    <section class="stats">
+        <div>
+            <strong id="animalCount">0</strong>
+            <span>Campus animals</span>
+        </div>
+        <div>
+            <strong id="reportCount">0</strong>
+            <span>Reports submitted</span>
+        </div>
+        <div>
+            <strong id="resolvedCount">0</strong>
+            <span>Resolved reports</span>
+        </div>
+        <div>
+            <strong id="volunteerCount">0</strong>
+            <span>Community volunteers</span>
+        </div>
+    </section>
+
+    <!-- ANIMAL DIRECTORY -->
+
+    <section class="animals-section" id="animals">
+        <div class="section-heading">
+            <div>
+                <span class="eyebrow">MEET THE RESIDENTS</span>
+                <h2>Our campus friends.</h2>
+                <p>The little lives that make our campus feel like home.</p>
+            </div>
+            <button class="outline-btn" onclick="openAnimalModal()">+ Add an animal</button>
+        </div>
+
+        <div class="animal-toolbar">
+            <div class="search-box">
+                <span>⌕</span>
+                <input id="animalSearch" type="text" placeholder="Search by name or location...">
+            </div>
+
+            <div class="animal-filters">
+                <button class="filter-btn active" data-animal-filter="All">All</button>
+                <button class="filter-btn" data-animal-filter="Dog">Dogs</button>
+                <button class="filter-btn" data-animal-filter="Cat">Cats</button>
+                <button class="filter-btn" data-animal-filter="Bird">Birds</button>
+                <button class="filter-btn" data-animal-filter="Other">Other</button>
+            </div>
+        </div>
+
+        <div class="animal-grid" id="animalGrid"></div>
+
+        <div class="empty-state hidden" id="animalEmpty">
+            <div>🐾</div>
+            <h3>No animals found.</h3>
+            <p>Try a different search or category.</p>
+        </div>
+    </section>
+
+    <!-- REPORTS -->
+
+    <section class="reports-section" id="reports">
+        <div class="section-heading">
+            <div>
+                <span class="eyebrow">COMMUNITY ALERTS</span>
+                <h2>Reports & sightings.</h2>
+                <p>Stay informed and help us look out for our campus friends.</p>
+            </div>
+            <button class="primary-btn" onclick="openReportModal()">+ Submit a report</button>
+        </div>
+
+        <div class="report-tabs">
+            <button class="report-tab active" data-report-filter="All">All reports</button>
+            <button class="report-tab" data-report-filter="Injured">Injured</button>
+            <button class="report-tab" data-report-filter="Missing">Missing</button>
+            <button class="report-tab" data-report-filter="Sighting">Sightings</button>
+        </div>
+
+        <div class="report-list" id="reportList"></div>
+
+        <div class="empty-state hidden" id="reportEmpty">
+            <div>♡</div>
+            <h3>No reports here.</h3>
+            <p>There are currently no reports matching this filter.</p>
+        </div>
+    </section>
+
+    <!-- VOLUNTEER SECTION -->
+
+    <section class="volunteer-section" id="about">
+        <div class="volunteer-content">
+            <span class="eyebrow">KINDNESS LOOKS GOOD ON YOU</span>
+            <h2>Be someone's<br><em>guardian angel.</em></h2>
+            <p>
+                Join the campus animal welfare community.
+                Help keep track of sightings, spread awareness
+                and support responsible animal care.
+            </p>
+            <button class="lime-btn" onclick="openVolunteerModal()">Become a volunteer →</button>
+        </div>
+
+        <div class="volunteer-art">
+            <div class="volunteer-circle">🐈</div>
+            <span class="volunteer-heart">♥</span>
+            <span class="volunteer-star">✦</span>
+        </div>
+    </section>
+
+</main>
+
+<footer>
+    <a href="#" class="brand">
+        <span class="paw-logo">🐾</span>
+        <span>pawtrack<span class="brand-dot">.</span></span>
+    </a>
+    <p>Made with love for our campus companions. ♡</p>
+    <span>Campus animal welfare · Demo project</span>
+</footer>
+
+
+<!-- REPORT MODAL -->
+
+<div class="modal-overlay hidden" id="reportModal">
+    <div class="modal">
+        <button class="close-btn" onclick="closeModal('reportModal')">×</button>
+
+        <span class="eyebrow">COMMUNITY REPORT</span>
+        <h2>Tell us what happened.</h2>
+        <p class="modal-subtitle">Your report helps the campus community stay informed.</p>
+
+        <form id="reportForm">
+            <label>
+                Type of report *
+                <select id="reportType" required>
+                    <option value="Injured">Injured / Needs attention</option>
+                    <option value="Missing">Missing animal</option>
+                    <option value="Sighting">Animal sighting</option>
+                    <option value="Other">Other concern</option>
+                </select>
+            </label>
+
+            <div class="form-row">
+                <label>
+                    Animal type *
+                    <select id="reportAnimal" required>
+                        <option value="Dog">Dog</option>
+                        <option value="Cat">Cat</option>
+                        <option value="Bird">Bird</option>
+                        <option value="Other">Other</option>
+                    </select>
+                </label>
+
+                <label>
+                    Animal name
+                    <input type="text" id="reportName" placeholder="If known">
+                </label>
+            </div>
+
+            <label>
+                Location *
+                <input type="text" id="reportLocation" placeholder="e.g. Near library entrance" required>
+            </label>
+
+            <label>
+                Description *
+                <textarea id="reportDescription" rows="3" placeholder="Describe what you observed..." required></textarea>
+            </label>
+
+            <div class="form-row">
+                <label>
+                    Your name *
+                    <input type="text" id="reporterName" placeholder="Your name" required>
+                </label>
+
+                <label>
+                    Contact number
+                    <input type="tel" id="reporterContact" placeholder="10-digit number" pattern="[0-9]{10}">
+                </label>
+            </div>
+
+            <button type="submit" class="primary-btn submit-btn">Submit report →</button>
+        </form>
+    </div>
+</div>
+
+
+<!-- ADD ANIMAL MODAL -->
+
+<div class="modal-overlay hidden" id="animalModal">
+    <div class="modal">
+        <button class="close-btn" onclick="closeModal('animalModal')">×</button>
+
+        <span class="eyebrow">CAMPUS DIRECTORY</span>
+        <h2>Add a campus friend.</h2>
+        <p class="modal-subtitle">Add an animal to the campus directory.</p>
+
+        <form id="animalForm">
+            <label>
+                Animal name *
+                <input type="text" id="animalName" placeholder="e.g. Bruno" required>
+            </label>
+
+            <div class="form-row">
+                <label>
+                    Animal type *
+                    <select id="animalType">
+                        <option value="Dog">Dog</option>
+                        <option value="Cat">Cat</option>
+                        <option value="Bird">Bird</option>
+                        <option value="Other">Other</option>
+                    </select>
+                </label>
+
+                <label>
+                    Emoji / icon
+                    <input type="text" id="animalEmoji" placeholder="🐕" maxlength="4">
+                </label>
+            </div>
+
+            <label>
+                Last known location *
+                <input type="text" id="animalLocation" placeholder="e.g. Near academic block" required>
+            </label>
+
+            <label>
+                Description
+                <textarea id="animalDescription" rows="3" placeholder="Describe identifying features..."></textarea>
+            </label>
+
+            <label>
+                General status
+                <select id="animalStatus">
+                    <option value="Regularly spotted">Regularly spotted</option>
+                    <option value="Needs attention">Needs attention</option>
+                    <option value="Not recently spotted">Not recently spotted</option>
+                </select>
+            </label>
+
+            <button type="submit" class="primary-btn submit-btn">Add to directory →</button>
+        </form>
+    </div>
+</div>
+
+
+<!-- ANIMAL DETAILS MODAL -->
+
+<div class="modal-overlay hidden" id="animalDetailsModal">
+    <div class="modal detail-modal">
+        <button class="close-btn" onclick="closeModal('animalDetailsModal')">×</button>
+        <div id="animalDetailsContent"></div>
+    </div>
+</div>
+
+
+<!-- VOLUNTEER MODAL -->
+
+<div class="modal-overlay hidden" id="volunteerModal">
+    <div class="modal">
+        <button class="close-btn" onclick="closeModal('volunteerModal')">×</button>
+
+        <span class="eyebrow">JOIN THE COMMUNITY</span>
+        <h2>Become a volunteer.</h2>
+        <p class="modal-subtitle">Every helping hand counts.</p>
+
+        <form id="volunteerForm">
+            <label>
+                Your name *
+                <input type="text" id="volunteerName" placeholder="Full name" required>
+            </label>
+
+            <label>
+                Roll number *
+                <input type="text" id="volunteerRoll" placeholder="Your roll number" required>
+            </label>
+
+            <label>
+                Email *
+                <input type="email" id="volunteerEmail" placeholder="student@example.com" required>
+            </label>
+
+            <label>
+                Areas of interest
+                <select id="volunteerInterest">
+                    <option value="Animal sightings">Animal sightings</option>
+                    <option value="Awareness campaigns">Awareness campaigns</option>
+                    <option value="Report coordination">Report coordination</option>
+                    <option value="General volunteering">General volunteering</option>
+                </select>
+            </label>
+
+            <button type="submit" class="primary-btn submit-btn">Join the community ♡</button>
+        </form>
+    </div>
+</div>
+
+<div class="toast" id="toast"></div>
+
+<script src="script.js"></script>
+</body>
+</html>
