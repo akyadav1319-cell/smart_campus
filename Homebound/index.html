@@ -1,0 +1,264 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Homebound — Your Journey Home</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Playfair+Display:wght@500;600;700&display=swap" rel="stylesheet">
+</head>
+<body>
+
+<header class="navbar">
+    <a href="#" class="brand">
+        <span class="brand-icon">↗</span>
+        <span>homebound<span class="brand-dot">.</span></span>
+    </a>
+
+    <nav>
+        <a href="#journeys">Find journeys</a>
+        <a href="#how">How it works</a>
+    </nav>
+
+    <button class="primary-btn" onclick="openPostModal()">+ Post a journey</button>
+</header>
+
+<main>
+    <section class="hero">
+        <div class="hero-content">
+            <span class="eyebrow">✦ YOUR NEXT JOURNEY STARTS HERE</span>
+            <h1>Going home?<br><em>Don't go alone.</em></h1>
+            <p>
+                Find fellow students travelling your way. Share a cab,
+                split the journey, and make getting home a little easier.
+            </p>
+            <div class="hero-actions">
+                <a href="#journeys" class="primary-btn">Explore journeys →</a>
+                <button class="secondary-btn" onclick="openPostModal()">Post your journey</button>
+            </div>
+            <div class="hero-note">
+                <span>✦</span> Made for students, by students.
+            </div>
+        </div>
+
+        <div class="hero-ticket">
+            <div class="ticket-top">
+                <span>YOUR TRAVEL PASS</span>
+                <span class="ticket-status">OPEN</span>
+            </div>
+            <div class="ticket-route">
+                <div>
+                    <small>FROM</small>
+                    <h2>THP</h2>
+                    <p>Thapar University</p>
+                </div>
+                <div class="route-line">
+                    <span>✈</span>
+                    <div></div>
+                </div>
+                <div class="destination">
+                    <small>TO</small>
+                    <h2>HOME</h2>
+                    <p>Wherever that is.</p>
+                </div>
+            </div>
+            <div class="ticket-divider"></div>
+            <div class="ticket-bottom">
+                <div>
+                    <small>TRAVELLERS</small>
+                    <strong>Better together</strong>
+                </div>
+                <div>
+                    <small>THE PLAN</small>
+                    <strong>Find your people.</strong>
+                </div>
+            </div>
+            <div class="ticket-stamp">HOMЕBOUND</div>
+        </div>
+    </section>
+
+    <section class="stats">
+        <div><strong id="totalJourneys">0</strong><span>Journeys listed</span></div>
+        <div><strong id="totalSeats">0</strong><span>Open seats</span></div>
+        <div><strong id="totalCities">0</strong><span>Destinations</span></div>
+        <div><strong>01</strong><span>Shared destination: home</span></div>
+    </section>
+
+    <section class="journeys-section" id="journeys">
+        <div class="section-heading">
+            <div>
+                <span class="eyebrow">THE TRAVEL BOARD</span>
+                <h2>Find your way home.</h2>
+                <p>See who's heading in your direction.</p>
+            </div>
+            <button class="primary-btn" onclick="openPostModal()">+ Add journey</button>
+        </div>
+
+        <div class="filters">
+            <div class="search-box">
+                <span>⌕</span>
+                <input id="searchInput" type="text" placeholder="Search city or destination...">
+            </div>
+
+            <select id="modeFilter">
+                <option value="all">All transport</option>
+                <option value="Train">Train</option>
+                <option value="Bus">Bus</option>
+                <option value="Flight">Flight</option>
+                <option value="Shared Cab">Shared cab</option>
+                <option value="Other">Other</option>
+            </select>
+
+            <select id="dateFilter">
+                <option value="all">Any date</option>
+                <option value="today">Today</option>
+                <option value="week">Next 7 days</option>
+                <option value="month">Next 30 days</option>
+            </select>
+
+            <select id="sortFilter">
+                <option value="soonest">Soonest first</option>
+                <option value="seats">Most seats</option>
+                <option value="latest">Latest first</option>
+            </select>
+        </div>
+
+        <div class="board-info">
+            <span id="resultsCount">Showing all journeys</span>
+            <span>● Updated locally</span>
+        </div>
+
+        <div class="journey-grid" id="journeyGrid"></div>
+
+        <div class="empty-state hidden" id="emptyState">
+            <div>⌁</div>
+            <h3>No journeys found.</h3>
+            <p>Try changing your filters or post a new journey.</p>
+            <button class="primary-btn" onclick="openPostModal()">Post a journey</button>
+        </div>
+    </section>
+
+    <section class="how-section" id="how">
+        <span class="eyebrow">SIMPLE AS THAT</span>
+        <h2>Three steps. One journey.</h2>
+
+        <div class="steps">
+            <article>
+                <span class="step-number">01</span>
+                <div class="step-icon">⌕</div>
+                <h3>Find your route</h3>
+                <p>Search for students travelling to your destination around the same time.</p>
+            </article>
+            <article>
+                <span class="step-number">02</span>
+                <div class="step-icon">＋</div>
+                <h3>Join the journey</h3>
+                <p>Check the travel details and join a journey with available seats.</p>
+            </article>
+            <article>
+                <span class="step-number">03</span>
+                <div class="step-icon">↗</div>
+                <h3>Head home</h3>
+                <p>Connect with fellow travellers and coordinate your plans directly.</p>
+            </article>
+        </div>
+    </section>
+</main>
+
+<footer>
+    <a href="#" class="brand">
+        <span class="brand-icon">↗</span>
+        <span>homebound<span class="brand-dot">.</span></span>
+    </a>
+    <p>For the miles between campus and home. ♡</p>
+    <span>Student travel community · Demo project</span>
+</footer>
+
+<!-- POST JOURNEY MODAL -->
+<div class="modal-overlay hidden" id="postModal">
+    <div class="modal">
+        <button class="close-btn" onclick="closeModal('postModal')">×</button>
+        <span class="eyebrow">SHARE YOUR PLANS</span>
+        <h2>Post a journey.</h2>
+        <p class="modal-subtitle">Let other students know you're heading their way.</p>
+
+        <form id="journeyForm">
+            <div class="form-row">
+                <label>
+                    Destination city *
+                    <input type="text" id="destination" placeholder="e.g. Delhi" required>
+                </label>
+                <label>
+                    Travel mode *
+                    <select id="mode" required>
+                        <option value="Train">Train</option>
+                        <option value="Bus">Bus</option>
+                        <option value="Flight">Flight</option>
+                        <option value="Shared Cab">Shared Cab</option>
+                        <option value="Other">Other</option>
+                    </select>
+                </label>
+            </div>
+
+            <div class="form-row">
+                <label>
+                    Departure date *
+                    <input type="date" id="travelDate" required>
+                </label>
+                <label>
+                    Departure time *
+                    <input type="time" id="travelTime" required>
+                </label>
+            </div>
+
+            <label>
+                Departure point *
+                <input type="text" id="departure" placeholder="e.g. Patiala Railway Station" required>
+            </label>
+
+            <div class="form-row">
+                <label>
+                    Available seats *
+                    <input type="number" id="seats" min="1" max="20" value="2" required>
+                </label>
+                <label>
+                    Your name *
+                    <input type="text" id="organiser" placeholder="Your name" required>
+                </label>
+            </div>
+
+            <div class="form-row">
+                <label>
+                    Hostel / Residence
+                    <input type="text" id="hostel" placeholder="e.g. Hostel H">
+                </label>
+                <label>
+                    Contact number *
+                    <input type="tel" id="contact" placeholder="10-digit number" pattern="[0-9]{10}" required>
+                </label>
+            </div>
+
+            <label>
+                Additional details
+                <textarea id="notes" rows="3" placeholder="Anything fellow travellers should know?"></textarea>
+            </label>
+
+            <button class="primary-btn submit-btn" type="submit">Publish journey →</button>
+        </form>
+    </div>
+</div>
+
+<!-- DETAILS MODAL -->
+<div class="modal-overlay hidden" id="detailsModal">
+    <div class="modal details-modal">
+        <button class="close-btn" onclick="closeModal('detailsModal')">×</button>
+        <div id="detailsContent"></div>
+    </div>
+</div>
+
+<div class="toast" id="toast"></div>
+
+<script src="script.js"></script>
+</body>
+</html>
